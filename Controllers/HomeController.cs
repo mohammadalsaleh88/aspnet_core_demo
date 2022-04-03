@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using aspnet_core_demo.Models;
+using System.Text.Json.Serialization;
 
 namespace aspnet_core_demo.Controllers;
 
@@ -13,9 +14,31 @@ public class HomeController : Controller
         _logger = logger;
     }
 
+    [HttpGet]
     public IActionResult Index()
     {
-        return View();
+        var model = new WeatherModel { CityName = string.Empty };
+
+        return View(model);
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> IndexAsync(WeatherModel model)
+    {
+        using (var client = new HttpClient())
+        {
+            var response = await client.GetAsync($"https://api.weatherapi.com/v1/current.json?key=ff21e45c2a294d00a94135445220304&q={model.CityName}&aqi=no");
+
+            var result = await response.Content.ReadAsStringAsync();
+
+            var weatherResult = System.Text.Json.JsonSerializer.Deserialize<WeatherResultModel>(result);
+
+            model.Result = weatherResult;
+
+            return View(model);
+        }
+
+
     }
 
     public IActionResult Privacy()

@@ -16,3 +16,12 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.form-group{
+  margin-bottom: 10px;
+}
+
+.form-label{
+  text-align: end;
+margin-right: 10px;
+}
