@@ -10,22 +10,21 @@ public class WeatherResultModel
     public Location Location { get; set; }
 
     [JsonPropertyName("current")]
-    [Display(Name = "Location: ")]
     public Current Current { get; set; }
 }
 
 public class Current
 {
     [JsonPropertyName("last_updated")]
-    [Display(Name = "Location: ")]
+    [Display(Name = "LastUpdated: ")]
     public string LastUpdated { get; set; }
 
     [JsonPropertyName("temp_c")]
-    [Display(Name = "Location: ")]
+    [Display(Name = "TempC: ")]
     public double TempC { get; set; }
 
     [JsonPropertyName("temp_f")]
-    [Display(Name = "Location: ")]
+    [Display(Name = "TempF: ")]
     public double TempF { get; set; }
 
 
@@ -39,6 +38,7 @@ public class Current
     public long Humidity { get; set; }
 
     [JsonPropertyName("cloud")]
+    [Display(Name = "Cloud:")]
     public long Cloud { get; set; }
 }
 
