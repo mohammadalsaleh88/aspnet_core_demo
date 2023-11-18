@@ -40,7 +40,7 @@ app.UseRouting();
 
 app.UseAuthorization();
 
-app.MapPrometheusScrapingEndpoint();
+// app.MapPrometheusScrapingEndpoint();
 
 app.MapControllerRoute(
     name: "default",
