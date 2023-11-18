@@ -27,8 +27,6 @@ public class Current
     [Display(Name = "TempF: ")]
     public double TempF { get; set; }
 
-
-
     [JsonPropertyName("condition")]
     [Display(Name = "Condition: ")]
     public Condition Condition { get; set; }

@@ -1,7 +1,6 @@
 ﻿using System.Diagnostics;
-using Microsoft.AspNetCore.Mvc;
 using aspnet_core_demo.Models;
-using System.Text.Json.Serialization;
+using Microsoft.AspNetCore.Mvc;
 
 namespace aspnet_core_demo.Controllers;
 
@@ -27,18 +26,22 @@ public class HomeController : Controller
     {
         using (var client = new HttpClient())
         {
-            var response = await client.GetAsync($"https://api.weatherapi.com/v1/current.json?key=ff21e45c2a294d00a94135445220304&q={model.CityName}&aqi=no");
+            var response = await client.GetAsync(
+                $"https://api.weatherapi.com/v1/current.json?key=ff21e45c2a294d00a94135445220304&q={model.CityName}&aqi=no"
+            );
 
             var result = await response.Content.ReadAsStringAsync();
 
-            var weatherResult = System.Text.Json.JsonSerializer.Deserialize<WeatherResultModel>(result);
+            var weatherResult = System
+                .Text
+                .Json
+                .JsonSerializer
+                .Deserialize<WeatherResultModel>(result);
 
             model.Result = weatherResult;
 
             return View(model);
         }
-
-
     }
 
     public IActionResult Privacy()
@@ -49,6 +52,8 @@ public class HomeController : Controller
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
     {
-        return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        return View(
+            new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier }
+        );
     }
 }

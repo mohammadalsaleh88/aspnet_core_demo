@@ -6,8 +6,12 @@
 <div class="offset-md-3 col-md-6">
     <form asp-action="Index" asp-controller="Home" method="post">
         <div class="form-group">
-            @Html.TextBoxFor(m => m.CityName, new {placeholder="City Name",
-            required = "required", @class="form-control"})
+            @Html.TextBoxFor(m => m.CityName, new
+                {
+                    placeholder = "City Name",
+                    required = "required",
+                    @class = "form-control"
+                })
         </div>
         <div class="form-group">
             <button type="submit" class="btn btn-primary">Search</button>
@@ -19,44 +23,44 @@
 {
     <hr>
     <div class="offset-md-3 col-md-6">
-    <form class="form-horizontal">
-        @if (Model.Result.Location != null)
+        <form class="form-horizontal">
+            @if (Model.Result.Location != null)
             {
                 <div class="form-group">
-                    @Html.LabelFor(m => m.Result.Location.Name, new {style="width: 85px;text-align: right;font-weight: bold;"})
+                    @Html.LabelFor(m => m.Result.Location.Name, new { style = "width: 85px;text-align: right;font-weight: bold;" })
                     @Html.DisplayTextFor(m => m.Result.Location.Name)
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(m => m.Result.Location.Region, new {style="width: 85px;text-align: right;font-weight: bold;"})
+                    @Html.LabelFor(m => m.Result.Location.Region, new { style = "width: 85px;text-align: right;font-weight: bold;" })
                     @Html.DisplayTextFor(m => m.Result.Location.Region)
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(m => m.Result.Location.Country, new {style="width: 85px;text-align: right;font-weight: bold;"})
+                    @Html.LabelFor(m => m.Result.Location.Country, new { style = "width: 85px;text-align: right;font-weight: bold;" })
                     @Html.DisplayTextFor(m => m.Result.Location.Country)
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(m => m.Result.Location.Localtime, new {style="width: 85px;text-align: right;font-weight: bold;"})
+                    @Html.LabelFor(m => m.Result.Location.Localtime, new { style = "width: 85px;text-align: right;font-weight: bold;" })
                     @Html.DisplayTextFor(m => m.Result.Location.Localtime)
                 </div>
             }
             @if (Model.Result.Current != null && Model.Result.Current.Condition != null)
             {
                 <div class="form-group">
-                    @Html.LabelFor(m => m.Result.Current.Condition, new {style="width: 85px;text-align: right;font-weight: bold;"})
+                    @Html.LabelFor(m => m.Result.Current.Condition, new { style = "width: 85px;text-align: right;font-weight: bold;" })
                     @Html.DisplayTextFor(m => m.Result.Current.Condition.Text)
                 </div>
             }
             @if (Model.Result?.Current?.TempC > 0)
             {
                 <div class="form-group">
-                    @Html.LabelFor(m => m.Result.Current.TempC, new {style="width: 85px;text-align: right;font-weight: bold;"})
+                    @Html.LabelFor(m => m.Result.Current.TempC, new { style = "width: 85px;text-align: right;font-weight: bold;" })
                     @Html.DisplayTextFor(m => m.Result.Current.TempC) &#8451;
                 </div>
             }
             @if (Model.Result?.Current?.Humidity > 0)
             {
                 <div class="form-group">
-                    @Html.LabelFor(m => m.Result.Current.Humidity, new {style="width: 85px;text-align: right;font-weight: bold;"})
+                    @Html.LabelFor(m => m.Result.Current.Humidity, new { style = "width: 85px;text-align: right;font-weight: bold;" })
                     @Html.DisplayTextFor(m => m.Result.Current.Humidity)%
                 </div>
             }
